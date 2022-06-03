@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.numberonedroid.scheduler">
+    package="dev.numberonedroid.scheduler" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -8,17 +17,35 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Scheduler">
+        android:theme="@style/Theme.Scheduler" >
+        <activity android:name=".activity.ToDoListActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.SecondMainActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.AddHomepageActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.HomepageViewActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.AddScheduler"
+                  android:exported="true"/>
         <activity
-            android:name=".activity.SecondMainActivity"
-            android:exported="true">
+            android:name=".activity.DateScheduleActivity"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="dev.numberonedroid.scheduler" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="dev.numberonedroid.scheduler.activity.AddScheduler"/>
     </application>
 
 </manifest>

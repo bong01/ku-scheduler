@@ -1,10 +1,11 @@
-package dev.numberonedroid.scheduler.activity
+package dev.numberonedroid.scheduler.db
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import dev.numberonedroid.scheduler.model.MyData
 
 
 class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {

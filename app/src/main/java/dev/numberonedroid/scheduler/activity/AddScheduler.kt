@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import dev.numberonedroid.scheduler.R
+import dev.numberonedroid.scheduler.model.MyData
 import java.util.*
 
 class AddScheduler: AppCompatActivity() {

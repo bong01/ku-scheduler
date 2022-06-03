@@ -1,4 +1,4 @@
-package dev.numberonedroid.scheduler.activity
+package dev.numberonedroid.scheduler.model
 
 import java.io.Serializable
 

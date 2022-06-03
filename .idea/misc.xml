@@ -3,15 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/drawable-v24/borderstyle.xml" value="0.2265" />
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/layout/activity_add.xml" value="0.1" />
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/layout/activity_second_main.xml" value="0.2259963768115942" />
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/layout/row.xml" value="0.1125" />
-        <entry key="..\:/Users/User/scheduler/app/src/main/res/layout/second_activity_main.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/drawable/ic_baseline_navigate_before_24.xml" value="0.1" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_date_schedule.xml" value="0.1" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/calendar_grid_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_homepage_view.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_second_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_to_do_list.xml" value="0.11481481481481481" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
