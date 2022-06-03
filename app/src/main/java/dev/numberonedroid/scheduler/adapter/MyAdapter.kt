@@ -1,9 +1,10 @@
-package dev.numberonedroid.scheduler.activity
+package dev.numberonedroid.scheduler.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.numberonedroid.scheduler.databinding.RowBinding
+import dev.numberonedroid.scheduler.model.MyData
 
 class MyAdapter(val items:ArrayList<MyData>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     interface OnItemClickListener{
@@ -13,7 +14,7 @@ class MyAdapter(val items:ArrayList<MyData>):RecyclerView.Adapter<MyAdapter.MyVi
         items.removeAt(pos)
         notifyItemRemoved(pos)
     }
-    fun addItem(mydata:MyData){
+    fun addItem(mydata: MyData){
         items.add(mydata)
         notifyDataSetChanged()
     }

@@ -1,8 +1,8 @@
 package dev.numberonedroid.scheduler.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import dev.numberonedroid.scheduler.adapter.CalendarGridAdapter
 import dev.numberonedroid.scheduler.databinding.ActivityMainBinding
@@ -25,14 +25,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLayout() {
         updateCalendar()
-        binding.prevMonthBtn.setOnClickListener {
-            --position
-            updateCalendar()
+
+        binding.apply {
+            prevMonthBtn.setOnClickListener {
+                --position
+                updateCalendar()
+            }
+            nextMonthBtn.setOnClickListener {
+                ++position
+                updateCalendar()
+            }
+            //TODO 버튼 디자인 수정
+            btnToDoList.setOnClickListener {
+                startActivity(Intent(this@MainActivity, ToDoListActivity::class.java))
+            }
+            btnHomepageView.setOnClickListener {
+                startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
+            }
+            btnAddSchedule.setOnClickListener {
+                startActivity(Intent(this@MainActivity, SecondMainActivity::class.java))
+            }
         }
-        binding.nextMonthBtn.setOnClickListener {
-            ++position
-            updateCalendar()
-        }
+
     }
 
     fun updateCalendar(){

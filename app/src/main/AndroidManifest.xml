@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.numberonedroid.scheduler" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN" />
@@ -15,6 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Scheduler" >
+        <activity android:name=".activity.ToDoListActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.SecondMainActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.AddHomepageActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.HomepageViewActivity"
+                  android:exported="true"/>
+        <activity android:name=".activity.AddScheduler"
+                  android:exported="true"/>
         <activity
             android:name=".activity.DateScheduleActivity"
             android:exported="false" >

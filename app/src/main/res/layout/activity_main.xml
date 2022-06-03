@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="30dp"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <LinearLayout
@@ -40,6 +40,22 @@
             android:layout_weight="1"
             android:background="@drawable/ic_baseline_navigate_next_24"
             android:text="" />
+
+        <Button
+                android:id="@+id/btn_to_do_list"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+        <Button
+                android:id="@+id/btn_homepage_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+        <Button
+                android:id="@+id/btn_add_schedule"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
     </LinearLayout>
 
     <LinearLayout
