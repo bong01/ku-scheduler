@@ -14,7 +14,6 @@
         android:gravity="center">
         <NumberPicker
             android:id="@+id/yearpicker"
-            android:datePickerMode="spinner"
             android:calendarViewShown="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
 
         <NumberPicker
             android:id="@+id/monthpicker"
-            android:datePickerMode="spinner"
             android:calendarViewShown="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

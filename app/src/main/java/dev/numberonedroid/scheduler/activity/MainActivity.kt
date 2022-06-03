@@ -3,8 +3,10 @@ package dev.numberonedroid.scheduler.activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import dev.numberonedroid.scheduler.R
 import dev.numberonedroid.scheduler.adapter.CalendarGridAdapter
 import dev.numberonedroid.scheduler.databinding.ActivityMainBinding
 import dev.numberonedroid.scheduler.databinding.YearMonthPickerBinding
@@ -64,10 +66,14 @@ class MainActivity : AppCompatActivity() {
             }
             prevMonthBtn.setOnClickListener {
                 --position
+                binding.linearDaysOfWeek.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_toprev)
+                binding.calendarRecyclerView.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_toprev)
                 updateCalendar()
             }
             nextMonthBtn.setOnClickListener {
                 ++position
+                binding.linearDaysOfWeek.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_tonext)
+                binding.calendarRecyclerView.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_tonext)
                 updateCalendar()
             }
             //TODO 버튼 디자인 수정
@@ -88,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         currentDate.time = Date()
         currentDate.set(Calendar.DAY_OF_MONTH, 1)
         currentDate.set(Calendar.MONTH, position)
+        binding.thisMonth.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_month_anim)
         binding.thisMonth.text = "${currentDate.get(Calendar.YEAR)}년 ${currentDate.get(Calendar.MONTH) + 1}월" //${monthStr[currentDate.get(Calendar.MONTH)]}"
         val tempMonth = currentDate.get(Calendar.MONTH)
         val dayList:MutableList<Date> = MutableList(6*7, { Date() })
