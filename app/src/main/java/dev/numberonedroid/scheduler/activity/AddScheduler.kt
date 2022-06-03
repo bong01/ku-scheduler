@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import dev.numberonedroid.scheduler.activity.MainActivity
 import dev.numberonedroid.scheduler.R
 import java.util.*
 
@@ -33,6 +32,17 @@ class AddScheduler: AppCompatActivity() {
         var smin:Int = 0
         var ehour:Int = 0
         var emin:Int = 0
+        if(intent.hasExtra("fixsch")) {
+            val newdata = intent.getSerializableExtra("fixsch") as MyData
+            //titletext.text = newdata.title
+            //contenttext.text = newdata.content
+            shour = newdata.starthour
+            smin = newdata.startmin
+            ehour = newdata.endhour
+            emin = newdata.endmin
+            stime.text = "${shour} : ${smin}"
+            etime.text = "${ehour} : ${emin}"
+        }
 
         startbutton.setOnClickListener{
             val cal = Calendar.getInstance()
@@ -59,14 +69,14 @@ class AddScheduler: AppCompatActivity() {
                 Toast.makeText(this,"내용을 입력해주세요", Toast.LENGTH_SHORT).show()
             else {
                 Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, SecondMainActivity::class.java)
                 intent.putExtra("newsch", MyData(0,0,0,titletext.text.toString(), contenttext.text.toString(), shour, smin, ehour, emin))
                 setResult(Activity.RESULT_OK, intent)
                 startActivity(intent)
             }
         }
         addbackbutton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SecondMainActivity::class.java)
             startActivity(intent)
         }
 

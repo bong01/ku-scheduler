@@ -8,22 +8,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.numberonedroid.scheduler.R
-import dev.numberonedroid.scheduler.databinding.ActivityMainBinding
-import dev.numberonedroid.scheduler.activity.AddScheduler
-import dev.numberonedroid.scheduler.activity.MyAdapter
-import dev.numberonedroid.scheduler.activity.MyDBHelper
-import dev.numberonedroid.scheduler.activity.MyData
+import dev.numberonedroid.scheduler.databinding.ActivitySecondMainBinding
 import java.io.FileOutputStream
 import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+class SecondMainActivity : AppCompatActivity() {
+    lateinit var binding: ActivitySecondMainBinding
     lateinit var adapter: MyAdapter
     lateinit var myDBHelper: MyDBHelper
     var data:ArrayList<MyData> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySecondMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initData()
         init()
@@ -36,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         myDBHelper = MyDBHelper(this)
         adapter.itemClickListener = object : MyAdapter.OnItemClickListener {
             override fun OnItemClick(position: Int) {
-                val builder = AlertDialog.Builder(this@MainActivity)
+                val builder = AlertDialog.Builder(this@SecondMainActivity)
                 builder.setTitle("일정 수정 및 삭제")
                     .setPositiveButton("수정", DialogInterface.OnClickListener { dlg, _ ->
-                        val intent1 = Intent(this@MainActivity, AddScheduler::class.java)
+                        val intent1 = Intent(this@SecondMainActivity, AddScheduler::class.java)
                         intent1.putExtra("fixsch", MyData(0,0,0,data[position].title, data[position].content, data[position].starthour, data[position].startmin,
                             data[position].endhour, data[position].endmin)
                         )
@@ -82,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         if(intent.hasExtra("newsch")) {
             val newdata = intent.getSerializableExtra("newsch") as MyData
             myDBHelper.insertSchedule(newdata)
-            //adapter.addItem(newdata)
+            adapter.addItem(newdata)
         }
         //data.add(MyData(0,0,0,"dd","ss",1,1,1,1))
         //data.add(MyData(0,0,0,"ss","ss",2,2,2,2))

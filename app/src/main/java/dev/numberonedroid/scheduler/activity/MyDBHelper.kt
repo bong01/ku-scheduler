@@ -111,7 +111,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         val year = data.year
         val month = data.month
         val day = data.day
-        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day';"
+        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day';" //따로 식별할 수 있는 아이디 필요
         val db = writableDatabase
         val cursor = db.rawQuery(strsql,null)
         val flag = cursor.count!=0
