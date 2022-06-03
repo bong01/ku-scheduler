@@ -74,14 +74,12 @@ class SecondMainActivity : AppCompatActivity() {
         }
         myDBHelper = MyDBHelper(this)
         //날짜 받기
-        data.addAll(myDBHelper.showschedule(0,0,0))
         if(intent.hasExtra("newsch")) {
             val newdata = intent.getSerializableExtra("newsch") as MyData
             myDBHelper.insertSchedule(newdata)
-            adapter.addItem(newdata)
+            //adapter.addItem(newdata)
         }
-        //data.add(MyData(0,0,0,"dd","ss",1,1,1,1))
-        //data.add(MyData(0,0,0,"ss","ss",2,2,2,2))
+        data.addAll(myDBHelper.showschedule(0,0,0))
 
 
     }

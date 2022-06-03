@@ -100,8 +100,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         val startmin = data.startmin
         val endhour = data.endhour
         val endmin = data.endmin
-        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day' and $TITLE='$title' and" +
-                "$CONTENT='$content' and $STARTHOUR='$starthour' and $STARTMIN='$startmin' and $ENDHOUR='$endhour' and $ENDMIN='$endmin';"
+        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day' and $TITLE='$title' and $CONTENT='$content' and $STARTHOUR='$starthour' and $STARTMIN='$startmin' and $ENDHOUR='$endhour' and $ENDMIN='$endmin';"
         val db = writableDatabase
         db.execSQL(strsql)
         db.close()
