@@ -34,7 +34,7 @@ class AddHomepageActivity : AppCompatActivity() {
     }
 
     private fun writeFile(homeName: String, homeAddress: String) {
-        val output = PrintStream(openFileOutput("out.txt", Context.MODE_APPEND))
+        val output = PrintStream(openFileOutput("hompageurls.txt", Context.MODE_APPEND))
         output.println(homeName)
         output.println(homeAddress)
         output.close()

@@ -69,7 +69,7 @@ class HomepageViewActivity : AppCompatActivity() {
 
     private fun initData() {
         try {
-            val outputScan = Scanner(openFileInput("out.txt"))
+            val outputScan = Scanner(openFileInput("hompageurls.txt"))
             readFileScan(outputScan)
         } catch (e: Exception){
             Toast.makeText(this, "아직 추가된 홈페이지가 없습니다.",Toast.LENGTH_SHORT).show()
@@ -135,11 +135,11 @@ class HomepageViewActivity : AppCompatActivity() {
     }
 
     private fun dataRemove(){
-        val textFile = File("/data/data/com.example.myschedulerksm/files/out.txt")
+        val textFile = File("/data/data/dev.numberonedroid.scheduler/files/hompageurls.txt")
         textFile.delete()
 
         for(i in adapter.items.indices) {
-            val output = PrintStream(openFileOutput("out.txt", MODE_APPEND))
+            val output = PrintStream(openFileOutput("hompageurls.txt", MODE_APPEND))
             output.println(adapter.items[i].homeName)
             output.println(adapter.items[i].homeUri)
             output.close()
