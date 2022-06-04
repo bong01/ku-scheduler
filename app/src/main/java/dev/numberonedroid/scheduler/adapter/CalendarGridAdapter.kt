@@ -3,10 +3,14 @@ package dev.numberonedroid.scheduler.adapter
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.alpha
 import androidx.core.graphics.blue
 import androidx.core.graphics.green
 import androidx.core.graphics.red
 import androidx.recyclerview.widget.RecyclerView
+import dev.numberonedroid.scheduler.R
 import dev.numberonedroid.scheduler.databinding.CalendarGridItemBinding
 import java.util.*
 
@@ -49,26 +53,23 @@ class CalendarGridAdapter(val tempMonth:Int, val items:MutableList<Date>) : Recy
         }
 
         if(position == selectedpos){
-            holder.binding.date.setBackgroundColor(Color.LTGRAY)
+            holder.binding.date.setBackgroundColor(ContextCompat.getColor(holder.binding.date.context,R.color.selectday))
         } else {
-            holder.binding.date.setBackgroundColor(Color.TRANSPARENT)
+            holder.binding.date.setBackgroundColor(ContextCompat.getColor(holder.binding.date.context,R.color.calendargrid))
         }
 
         if(isToday(tempCal)){
             if(position==selectedpos) {
-                val r1 = Color.YELLOW.red
-                val b1 = Color.YELLOW.blue
-                val g1 = Color.YELLOW.green
-                val r2 = Color.LTGRAY.red
-                val b2 = Color.LTGRAY.blue
-                val g2 = Color.LTGRAY.green
-                val r3 = (r1 + r2) / 2
-                val b3 = (b1 + b2) / 2
-                val g3 = (g1 + g2) / 2
-                val avgColor = Color.rgb(r3, g3, b3)
+                val c1 = ContextCompat.getColor(holder.binding.date.context,R.color.today)
+                val c2 = ContextCompat.getColor(holder.binding.date.context,R.color.selectday)
+                val a3 = c1.alpha //(c1.alpha + c2.alpha) / 2
+                val r3 = (c1.red + c2.red) / 2
+                val g3 = (c1.green + c2.green) / 2
+                val b3 = (c1.blue + c2.blue) / 2
+                val avgColor = Color.argb(a3, r3, g3, b3)
                 holder.binding.date.setBackgroundColor(avgColor)
             } else
-                holder.binding.date.setBackgroundColor(Color.YELLOW)
+                holder.binding.date.setBackgroundColor(ContextCompat.getColor(holder.binding.date.context,R.color.today))
         }
     }
 
