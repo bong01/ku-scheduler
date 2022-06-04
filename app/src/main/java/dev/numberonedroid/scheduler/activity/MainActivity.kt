@@ -78,13 +78,14 @@ class MainActivity : AppCompatActivity() {
             }
             //TODO 버튼 디자인 수정
             btnToDoList.setOnClickListener {
-                startActivity(Intent(this@MainActivity, ToDoListActivity::class.java))
+                var calendar = currentDate.clone() as Calendar
+                val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
+                intent.putExtra("year", calendar.get(Calendar.YEAR))
+                intent.putExtra("month", calendar.get(Calendar.MONTH))
+                startActivity(intent)
             }
             btnHomepageView.setOnClickListener {
                 startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
-            }
-            btnAddSchedule.setOnClickListener {
-                startActivity(Intent(this@MainActivity, SecondMainActivity::class.java))
             }
         }
 
@@ -115,7 +116,10 @@ class MainActivity : AppCompatActivity() {
                 if(prevselectedpos != null) {
                     adapter.notifyItemChanged(prevselectedpos)
                 }
-                val intent = Intent(this@MainActivity, DateScheduleActivity::class.java)
+                val intent = Intent(this@MainActivity, SecondMainActivity::class.java)
+                intent.putExtra("year", calendar.get(Calendar.YEAR))
+                intent.putExtra("month", calendar.get(Calendar.MONTH))
+                intent.putExtra("day", calendar.get(Calendar.DAY_OF_MONTH))
                 startActivity(intent)
             }
         }

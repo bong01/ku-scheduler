@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.numberonedroid.scheduler.adapter.ToDoListAdapter
 import dev.numberonedroid.scheduler.databinding.ActivityToDoListBinding
-import dev.numberonedroid.scheduler.model.Schedule
-import dev.numberonedroid.scheduler.util.DateUtil
-import java.time.LocalDateTime
+import dev.numberonedroid.scheduler.db.MyDBHelper
+import dev.numberonedroid.scheduler.model.MyData
 
 class ToDoListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityToDoListBinding
     private lateinit var recyclerView: RecyclerView
-    private var scheduleList: ArrayList<Schedule> = ArrayList()
+    private var scheduleList: ArrayList<MyData> = ArrayList()
+    lateinit var myDBHelper: MyDBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,41 +29,10 @@ class ToDoListActivity : AppCompatActivity() {
 
     private fun initScheduleList() {
         //TODO DB에 있는 데이터로 교체하기
-        scheduleList.add(
-            Schedule(
-                "모바일 프로그래밍 수업",
-                "Firebase 실습",
-                DateUtil.localDateTimeToString(LocalDateTime.now()),
-                DateUtil.localDateTimeToString(LocalDateTime.now())
-            )
-        )
-
-        scheduleList.add(
-            Schedule(
-                "모바일 프로그래밍 수업",
-                "Firebase 실습",
-                DateUtil.localDateTimeToString(LocalDateTime.now()),
-                DateUtil.localDateTimeToString(LocalDateTime.now())
-            )
-        )
-
-        scheduleList.add(
-            Schedule(
-                "모바일 프로그래밍 수업",
-                "Firebase 실습",
-                DateUtil.localDateTimeToString(LocalDateTime.now()),
-                DateUtil.localDateTimeToString(LocalDateTime.now())
-            )
-        )
-
-        scheduleList.add(
-            Schedule(
-                "모바일 프로그래밍 수업",
-                "Firebase 실습",
-                DateUtil.localDateTimeToString(LocalDateTime.now()),
-                DateUtil.localDateTimeToString(LocalDateTime.now())
-            )
-        )
+        val year = intent.getIntExtra("year", 0)
+        val month = intent.getIntExtra("month", 0)
+        myDBHelper = MyDBHelper(this)
+        scheduleList = myDBHelper.showSchedule2(year, month) // todo
     }
 
     private fun initRecyclerView() {

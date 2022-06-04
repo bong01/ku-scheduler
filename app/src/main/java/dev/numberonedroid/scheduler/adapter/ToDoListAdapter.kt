@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.numberonedroid.scheduler.databinding.ToDoListItemBinding
-import dev.numberonedroid.scheduler.model.Schedule
+import dev.numberonedroid.scheduler.model.MyData
 
-class ToDoListAdapter (val scheduleList: List<Schedule>) : RecyclerView.Adapter<ToDoListAdapter.ViewHolder>(){
+class ToDoListAdapter (val scheduleList: List<MyData>) : RecyclerView.Adapter<ToDoListAdapter.ViewHolder>(){
+
+    private val D_DAY_PREFIX = "D-"
 
     interface OnItemClickListener {
-        fun onItemClick(schedule: Schedule)
+        fun onItemClick(myData: MyData)
     }
 
     var itemClickListener: OnItemClickListener? = null
@@ -37,6 +39,9 @@ class ToDoListAdapter (val scheduleList: List<Schedule>) : RecyclerView.Adapter<
                     tvTitle.paintFlags = 0
                 }
             }
+            //TODO D-Day 계산, 날짜 출력
+            tvDDay.text = D_DAY_PREFIX + ""
+            tvTitle.text = scheduleList[position].title
         }
     }
 
