@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    android:background="@drawable/back">
 
 
     <LinearLayout
@@ -29,8 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:text="Month"
+            android:fontFamily="@font/cookierun_regular"
             android:padding="7dp"
+            android:text="Month"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -42,16 +44,6 @@
             android:layout_weight="1"
             android:background="@drawable/ic_baseline_navigate_next_24"
             android:text="" />
-
-        <Button
-                android:id="@+id/btn_to_do_list"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
-
-        <Button
-                android:id="@+id/btn_homepage_view"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
 
     </LinearLayout>
 
@@ -71,6 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/sun"
             android:textAlignment="center"
@@ -83,6 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/mon"
             android:textAlignment="center"
@@ -95,6 +89,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/tue"
             android:textAlignment="center"
@@ -107,6 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/wed"
             android:textAlignment="center"
@@ -119,6 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/thu"
             android:textAlignment="center"
@@ -131,6 +128,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/fri"
             android:textAlignment="center"
@@ -143,6 +141,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/cookierun_bold"
             android:padding="10dp"
             android:text="@string/sat"
             android:textAlignment="center"

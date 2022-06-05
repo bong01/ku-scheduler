@@ -10,10 +10,21 @@
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/calendar_grid_item.xml" value="0.1" />
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/homepage_layout.xml" value="0.11770833333333333" />
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/year_month_picker.xml" value="0.15806159420289856" />
+        <entry key="app/src/main/res/font/font1.xml" value="0.2824074074074074" />
+        <entry key="app/src/main/res/font/font2.xml" value="0.2824074074074074" />
+        <entry key="app/src/main/res/layout/activity_add.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/activity_add_homepage.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/activity_date_schedule.xml" value="0.20277777777777778" />
         <entry key="app/src/main/res/layout/activity_homepage_view.xml" value="0.13229166666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_second_main.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/activity_to_do_list.xml" value="0.11481481481481481" />
+        <entry key="app/src/main/res/layout/calendar_grid_item.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/homepage_layout.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/row.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/to_do_list_item.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/year_month_picker.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/menu/move_activity_menu.xml" value="0.20277777777777778" />
       </map>
     </option>
   </component>

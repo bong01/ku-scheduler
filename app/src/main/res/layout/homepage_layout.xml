@@ -10,21 +10,23 @@
         android:id="@+id/homenameText"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:layout_weight="2"
+        android:fontFamily="@font/cookierun_bold"
         android:gravity="center"
         android:text="TextView"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_margin="10dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/homeUriText"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:layout_weight="3"
+        android:fontFamily="@font/cookierun_regular"
         android:gravity="center"
         android:text="TextView"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_margin="10dp" />
+        android:textStyle="bold" />
 </LinearLayout>
