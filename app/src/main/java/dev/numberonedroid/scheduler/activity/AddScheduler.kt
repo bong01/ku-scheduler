@@ -71,7 +71,7 @@ class AddScheduler: AppCompatActivity() {
             else {
                 Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, SecondMainActivity::class.java)
-                intent.putExtra("newsch", MyData(0,0,0,titletext.text.toString(), contenttext.text.toString(), shour, smin, ehour, emin))
+                intent.putExtra("newsch", MyData(0,0,0,0,titletext.text.toString(), contenttext.text.toString(), shour, smin, ehour, emin))
                 setResult(Activity.RESULT_OK, intent)
                 startActivity(intent)
             }

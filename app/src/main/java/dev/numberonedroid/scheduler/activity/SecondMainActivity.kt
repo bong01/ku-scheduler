@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.numberonedroid.scheduler.R
-import dev.numberonedroid.scheduler.adapter.MyAdapter
+
 import dev.numberonedroid.scheduler.databinding.ActivitySecondMainBinding
 import dev.numberonedroid.scheduler.db.MyDBHelper
 import dev.numberonedroid.scheduler.model.MyData
@@ -38,7 +38,7 @@ class SecondMainActivity : AppCompatActivity() {
                 builder.setTitle("일정 수정 및 삭제")
                     .setPositiveButton("수정", DialogInterface.OnClickListener { dlg, _ ->
                         val intent1 = Intent(this@SecondMainActivity, AddScheduler::class.java)
-                        intent1.putExtra("fixsch", MyData(0,0,0,data[position].title, data[position].content, data[position].starthour, data[position].startmin,
+                        intent1.putExtra("fixsch", MyData(0,0,0,0,data[position].title, data[position].content, data[position].starthour, data[position].startmin,
                             data[position].endhour, data[position].endmin)
                         )
                         startActivity(intent1)

@@ -13,6 +13,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         val DB_NAME="mysch.db"
         val DB_VERSION=1
         val TABLE_NAME = "schedule"
+        val ID = "id"
         val YEAR = "year"
         val MONTH = "month"
         val DAY = "day"
@@ -26,6 +27,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
 
     fun insertSchedule(data: MyData):Boolean{
         val values = ContentValues()
+        values.put(ID, data.id)
         values.put(YEAR, data.year)
         values.put(MONTH, data.month)
         values.put(DAY, data.day)
@@ -48,6 +50,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
 
     override fun onCreate(db: SQLiteDatabase?) {
         val create_table = "create table if not exists $TABLE_NAME("+
+                "$ID integer primary key autoincrement,"+
                 "$YEAR integer,"+
                 "$MONTH integer,"+
                 "$DAY integer, "+
@@ -75,6 +78,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         val cursor = db.rawQuery(strsql,null)
         //val flag = cursor.count!=0
         while(cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndex(ID))
             val year = cursor.getInt(cursor.getColumnIndex(YEAR))
             val month = cursor.getInt(cursor.getColumnIndex(MONTH))
             val day = cursor.getInt(cursor.getColumnIndex(DAY))
@@ -84,7 +88,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
             val startmin = cursor.getInt(cursor.getColumnIndex(STARTMIN))
             val endhour = cursor.getInt(cursor.getColumnIndex(ENDHOUR))
             val endmin = cursor.getInt(cursor.getColumnIndex(ENDMIN))
-            mydata.add(MyData(year,month,day,title,content,starthour,startmin,endhour,endmin))
+            mydata.add(MyData(id,year,month,day,title,content,starthour,startmin,endhour,endmin))
         }
         cursor.close()
         db.close()
@@ -92,6 +96,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
     }
 
     fun deleteSchedule(data: MyData) {
+        val id = data.id
         val year = data.year
         val month = data.month
         val day = data.day
@@ -118,6 +123,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         if(flag){
             cursor.moveToFirst()
             val values = ContentValues()
+            values.put(ID, data.id)
             values.put(YEAR, data.year)
             values.put(MONTH, data.month)
             values.put(DAY, data.day)
