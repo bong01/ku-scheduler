@@ -1,4 +1,4 @@
-package dev.numberonedroid.scheduler.activity
+package dev.numberonedroid.scheduler.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,10 +14,10 @@ class MyAdapter(val items:ArrayList<MyData>):RecyclerView.Adapter<MyAdapter.MyVi
         items.removeAt(pos)
         notifyItemRemoved(pos)
     }
-    /*fun addItem(mydata:MyData){
-        items.add(mydata)
+    fun addItem(myData: MyData){
+        items.add(myData)
         notifyDataSetChanged()
-    }*/
+    }
 
     var itemClickListener: OnItemClickListener?=null
 

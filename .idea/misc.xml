@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/drawable/ic_baseline_navigate_before_24.xml" value="0.1" />
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_date_schedule.xml" value="0.1" />
-        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_homepage_view.xml" value="0.11770833333333333" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/calendar_grid_item.xml" value="0.1" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/homepage_layout.xml" value="0.11770833333333333" />
+        <entry key="..\:/Users/s_znyi2709/Documents/GitHub/ku-scheduler/app/src/main/res/layout/year_month_picker.xml" value="0.15806159420289856" />
         <entry key="app/src/main/res/layout/activity_homepage_view.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/activity_second_main.xml" value="0.13229166666666667" />

@@ -23,6 +23,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         val STARTMIN = "startmin"
         val ENDHOUR = "endhour"
         val ENDMIN = "endmin"
+        val IS_DONE = "isDone"
     }
 
     fun insertSchedule(data: MyData):Boolean{
@@ -37,6 +38,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
         values.put(STARTMIN, data.startmin)
         values.put(ENDHOUR, data.endhour)
         values.put(ENDMIN, data.endmin)
+        values.put(IS_DONE, data.isDone)
         val db = writableDatabase
         if(db.insert(TABLE_NAME, null, values)>0){
             db.close() //성공하든 실패하든 무조건 데이터베이스는 닫기
@@ -59,7 +61,8 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
                 "$STARTHOUR integer, "+
                 "$STARTMIN integer,"+
                 "$ENDHOUR integer,"+
-                "$ENDMIN integer);" //table 생성
+                "$ENDMIN integer, "+
+                "$IS_DONE varchar(10));" //table 생성
         db!!.execSQL(create_table)
     }
 
@@ -71,7 +74,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
 
 
     @SuppressLint("Range")
-    fun showschedule(year:Int, month:Int, day:Int): ArrayList<MyData> {
+    fun showSchedule(year:Int, month:Int, day:Int): ArrayList<MyData> {
         val mydata = arrayListOf<MyData>()
         val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day';"
         val db = readableDatabase
@@ -88,42 +91,31 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
             val startmin = cursor.getInt(cursor.getColumnIndex(STARTMIN))
             val endhour = cursor.getInt(cursor.getColumnIndex(ENDHOUR))
             val endmin = cursor.getInt(cursor.getColumnIndex(ENDMIN))
-            mydata.add(MyData(id,year,month,day,title,content,starthour,startmin,endhour,endmin))
+            val isDone = cursor.getString(cursor.getColumnIndex(IS_DONE)).toBoolean()
+
+            mydata.add(MyData(id, year,month,day,title,content,starthour,startmin,endhour,endmin, isDone))
         }
         cursor.close()
         db.close()
         return mydata
     }
 
-    fun deleteSchedule(data: MyData) {
-        val id = data.id
-        val year = data.year
-        val month = data.month
-        val day = data.day
-        val title = data.title
-        val content = data.content
-        val starthour = data.starthour
-        val startmin = data.startmin
-        val endhour = data.endhour
-        val endmin = data.endmin
-        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day' and $TITLE='$title' and $CONTENT='$content' and $STARTHOUR='$starthour' and $STARTMIN='$startmin' and $ENDHOUR='$endhour' and $ENDMIN='$endmin';"
+    fun deleteSchedule(id: Int) {
+        val strsql = "delete from $TABLE_NAME where $ID='$id';"
         val db = writableDatabase
         db.execSQL(strsql)
         db.close()
     }
 
     fun updateSchedule(data: MyData): Boolean {
-        val year = data.year
-        val month = data.month
-        val day = data.day
-        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day';" //따로 식별할 수 있는 아이디 필요
+        val id = data.id
+        val strsql = "select * from $TABLE_NAME where $ID='$id';" //따로 식별할 수 있는 아이디 필요
         val db = writableDatabase
         val cursor = db.rawQuery(strsql,null)
         val flag = cursor.count!=0
         if(flag){
             cursor.moveToFirst()
             val values = ContentValues()
-            values.put(ID, data.id)
             values.put(YEAR, data.year)
             values.put(MONTH, data.month)
             values.put(DAY, data.day)
@@ -133,12 +125,39 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
             values.put(STARTMIN, data.startmin)
             values.put(ENDHOUR, data.endhour)
             values.put(ENDMIN, data.endmin)
-            //db.update(TABLE_NAME, values,"$PID=?", arrayOf(pid.toString()))
+            values.put(IS_DONE, data.isDone)
+            db.update(TABLE_NAME, values,"$ID=?", arrayOf(id.toString()))
         }
         cursor.close()
         db.close()
         return flag
+    }
 
+    @SuppressLint("Range")
+    fun showSchedule2(year:Int, month:Int): ArrayList<MyData> {
+        val mydata = arrayListOf<MyData>()
+        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month';"
+        val db = readableDatabase
+        val cursor = db.rawQuery(strsql,null)
+        //val flag = cursor.count!=0
+        while(cursor.moveToNext()){
+            val id = cursor.getInt(cursor.getColumnIndex(ID))
+            val year = cursor.getInt(cursor.getColumnIndex(YEAR))
+            val month = cursor.getInt(cursor.getColumnIndex(MONTH))
+            val day = cursor.getInt(cursor.getColumnIndex(DAY))
+            val title = cursor.getString(cursor.getColumnIndex(TITLE))
+            val content = cursor.getString(cursor.getColumnIndex(CONTENT))
+            val starthour = cursor.getInt(cursor.getColumnIndex(STARTHOUR))
+            val startmin = cursor.getInt(cursor.getColumnIndex(STARTMIN))
+            val endhour = cursor.getInt(cursor.getColumnIndex(ENDHOUR))
+            val endmin = cursor.getInt(cursor.getColumnIndex(ENDMIN))
+            val isDone = cursor.getString(cursor.getColumnIndex(IS_DONE)).toBoolean()
+
+            mydata.add(MyData(id, year,month,day,title,content,starthour,startmin,endhour,endmin, isDone))
+        }
+        cursor.close()
+        db.close()
+        return mydata
     }
 }
 
