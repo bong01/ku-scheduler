@@ -43,12 +43,11 @@
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
         app:layout_constraintStart_toStartOf="@+id/homeNameEditText" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/addBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="120dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#B955D1"
         android:fontFamily="@font/cookierun_bold"
         android:text="추가"
         android:textSize="20sp"
@@ -58,19 +57,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/homeNameEditText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
+        app:layout_constraintVertical_bias="0.299"
+        android:background="@drawable/small_btn"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/clearBtn"
         android:layout_width="261dp"
-        android:layout_height="51dp"
+        android:layout_height="60dp"
         android:layout_marginTop="112dp"
-        android:backgroundTint="#B955D1"
         android:fontFamily="@font/cookierun_bold"
         android:text="취소하고 돌아가기"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/addBtn"
+        android:background="@drawable/bigbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

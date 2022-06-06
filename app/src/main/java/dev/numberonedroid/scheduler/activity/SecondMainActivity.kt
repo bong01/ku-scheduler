@@ -48,10 +48,14 @@ class SecondMainActivity : AppCompatActivity() {
         myDBHelper = MyDBHelper(this)
         val data = myDBHelper.showSchedule(YEAR, MONTH, DAY)
         adapter = MyAdapter(data)
-        if(adapter.items.size==0)
+        if(adapter.items.size==0){
+            binding.recyclerView.isVisible=false
             binding.emptyView.isVisible=true
-        else
+        }
+        else{
+            binding.recyclerView.isVisible=true
             binding.emptyView.isVisible=false
+        }
         adapter.itemClickListener = object : MyAdapter.OnItemClickListener {
             override fun OnItemClick(position: Int) {
                 val builder = AlertDialog.Builder(this@SecondMainActivity)
@@ -79,6 +83,7 @@ class SecondMainActivity : AppCompatActivity() {
                         myDBHelper.deleteSchedule(data[position].id!!)
                         adapter.removeItem(position)
                         if(adapter.items.size==0)
+                            binding.recyclerView.isVisible=false
                             binding.emptyView.isVisible=true
                     })
                 val dlg = builder.create()
