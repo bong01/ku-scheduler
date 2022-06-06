@@ -35,15 +35,6 @@
                 android:name=".activity.AddScheduler"
                 android:exported="true"/>
         <activity
-                android:name=".activity.DateScheduleActivity"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="dev.numberonedroid.scheduler"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
                 android:name=".activity.MainActivity"
                 android:exported="true">
             <intent-filter>

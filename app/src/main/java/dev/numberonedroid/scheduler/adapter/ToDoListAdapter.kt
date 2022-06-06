@@ -71,6 +71,7 @@ class ToDoListAdapter(val schedules: List<MyData>) : RecyclerView.Adapter<ToDoLi
             tvDDay.text = "D${diff - 1}"
             if ((diff - 1) > 0) {
                 tvDDay.setTextColor(Color.GRAY)
+                tvTitle.setTextColor(Color.GRAY)
                 tvDDay.text = "D+${diff - 1}"
             }
             if ((diff - 1) == 0) {
