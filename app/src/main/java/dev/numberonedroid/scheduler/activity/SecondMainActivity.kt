@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +25,6 @@ class SecondMainActivity : AppCompatActivity() {
     var MONTH: Int = 0
     var DAY: Int = 0
 
-    //    var data:ArrayList<MyData> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondMainBinding.inflate(layoutInflater)
@@ -52,6 +52,8 @@ class SecondMainActivity : AppCompatActivity() {
         adapter = MyAdapter(data)
         if(adapter.items.size==0)
             binding.emptyView.isVisible=true
+        else
+            binding.emptyView.isVisible=false
         adapter.itemClickListener = object : MyAdapter.OnItemClickListener {
             override fun OnItemClick(position: Int) {
                 val builder = AlertDialog.Builder(this@SecondMainActivity)
@@ -78,6 +80,8 @@ class SecondMainActivity : AppCompatActivity() {
                     .setNegativeButton("삭제", DialogInterface.OnClickListener { dlg, _ ->
                         myDBHelper.deleteSchedule(data[position].id!!)
                         adapter.removeItem(position)
+                        if(adapter.items.size==0)
+                            binding.emptyView.isVisible=true
                     })
                 val dlg = builder.create()
                 dlg.show()
