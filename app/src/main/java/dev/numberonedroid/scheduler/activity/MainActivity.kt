@@ -121,6 +121,7 @@ class MainActivity : AppCompatActivity() {
                     adapter.notifyItemChanged(prevselectedpos)
                 }
                 val intent = Intent(this@MainActivity, SecondMainActivity::class.java)
+                var calendar = currentDate.clone() as Calendar
                 intent.putExtra("year", calendar.get(Calendar.YEAR))
                 intent.putExtra("month", calendar.get(Calendar.MONTH))
                 intent.putExtra("day", calendar.get(Calendar.DAY_OF_MONTH))

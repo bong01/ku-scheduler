@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import dev.numberonedroid.scheduler.R
 import dev.numberonedroid.scheduler.db.MyDBHelper
 import dev.numberonedroid.scheduler.model.MyData
+import java.text.DecimalFormat
 import java.util.*
 
 class AddScheduler : AppCompatActivity() {
@@ -36,6 +37,7 @@ class AddScheduler : AppCompatActivity() {
         val savebutton = findViewById<Button>(R.id.savebutton)
         val stime = findViewById<TextView>(R.id.stime)
         val etime = findViewById<TextView>(R.id.etime)
+        val myformat = DecimalFormat("00")
         var shour: Int = 0
         var smin: Int = 0
         var ehour: Int = 0
@@ -48,13 +50,13 @@ class AddScheduler : AppCompatActivity() {
             smin = newdata.startmin
             ehour = newdata.endhour
             emin = newdata.endmin
-            stime.text = "${shour} : ${smin}"
-            etime.text = "${ehour} : ${emin}"
+            stime.text = "${myformat.format(shour)} : ${myformat.format(smin)}"
+            etime.text = "${myformat.format(ehour)} : ${myformat.format(emin)}"
         }
         startbutton.setOnClickListener {
             val cal = Calendar.getInstance()
             val timeSet = TimePickerDialog.OnTimeSetListener { timePicker, hour, min ->
-                stime.text = "${hour} : ${min}"
+                stime.text = "${myformat.format(hour)} : ${myformat.format(min)}"
                 shour = hour
                 smin = min
             }
@@ -63,7 +65,7 @@ class AddScheduler : AppCompatActivity() {
         endbutton.setOnClickListener {
             val cal = Calendar.getInstance()
             val timeSet = TimePickerDialog.OnTimeSetListener { timePicker, hour, min ->
-                etime.text = "${hour} : ${min}"
+                etime.text = "${myformat.format(hour)} : ${myformat.format(min)}"
                 ehour = hour
                 emin = min
             }
