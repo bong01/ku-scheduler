@@ -8,33 +8,35 @@
     android:background="@drawable/img">
 
     <EditText
-        android:background="#BF7C7C7C"
         android:id="@+id/homeNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="152dp"
+        android:background="#BF7C7C7C"
         android:ems="10"
+        android:fontFamily="@font/cookierun_regular"
         android:hint="홈페이지 이름 입력"
-        android:textColorHint="@color/white"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="@null"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:background="#BF7C7C7C"
         android:id="@+id/homeUriEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#BF7C7C7C"
         android:ems="10"
+        android:fontFamily="@font/cookierun_regular"
         android:hint="홈페이지 주소 입력"
-        android:textColorHint="@color/white"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="@null"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/homeNameEditText"
         app:layout_constraintHorizontal_bias="0.0"
@@ -43,24 +45,26 @@
         app:layout_constraintVertical_bias="0.071" />
 
     <Button
-        android:backgroundTint="#B955D1"
         android:id="@+id/addBtn"
         android:layout_width="90dp"
         android:layout_height="128dp"
         android:layout_marginEnd="44dp"
+        android:backgroundTint="#B955D1"
+        android:fontFamily="@font/cookierun_bold"
         android:text="추가"
-        android:textStyle="bold"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/homeNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/homeNameEditText"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:backgroundTint="#B955D1"
         android:id="@+id/clearBtn"
         android:layout_width="261dp"
         android:layout_height="51dp"
+        android:backgroundTint="#B955D1"
+        android:fontFamily="@font/cookierun_bold"
         android:text="취소하고 돌아가기"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
