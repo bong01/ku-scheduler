@@ -121,9 +121,10 @@ class MainActivity : AppCompatActivity() {
                     adapter.notifyItemChanged(prevselectedpos)
                 }
                 val intent = Intent(this@MainActivity, SecondMainActivity::class.java)
-                var calendar = currentDate.clone() as Calendar
-                intent.putExtra("year", calendar.get(Calendar.YEAR))
-                intent.putExtra("month", calendar.get(Calendar.MONTH))
+                val calendar = Calendar.getInstance()
+                calendar.time = adapter.items[position]
+                intent.putExtra("year", calendar.get(Calendar.YEAR ))
+                intent.putExtra("month", calendar.get(Calendar.MONTH) + 1)
                 intent.putExtra("day", calendar.get(Calendar.DAY_OF_MONTH))
                 startActivity(intent)
             }
@@ -140,10 +141,11 @@ class MainActivity : AppCompatActivity() {
         when (item?.itemId) {
             R.id.item1
             -> {
-                var calendar = currentDate.clone() as Calendar
+                val calendar = Calendar.getInstance()
+                calendar.time = adapter.items[position]
                 val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
                 intent.putExtra("year", calendar.get(Calendar.YEAR))
-                intent.putExtra("month", calendar.get(Calendar.MONTH))
+                intent.putExtra("month", calendar.get(Calendar.MONTH) + 1)
                 startActivity(intent)
             }
             R.id.item2
