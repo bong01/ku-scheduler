@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AddHomepageActivity"
-    android:background="@drawable/img">
+    android:background="@drawable/img"
+    tools:context=".activity.AddHomepageActivity">
 
     <EditText
         android:id="@+id/homeNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="10dp"
         android:background="#BF7C7C7C"
         android:ems="10"
         android:fontFamily="@font/cookierun_regular"
@@ -22,13 +22,15 @@
         android:text="@null"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/addBtn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/addBtn" />
 
     <EditText
         android:id="@+id/homeUriEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
         android:background="#BF7C7C7C"
         android:ems="10"
         android:fontFamily="@font/cookierun_regular"
@@ -37,40 +39,38 @@
         android:minHeight="48dp"
         android:text="@null"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/homeNameEditText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/homeNameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/homeNameEditText"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintBottom_toBottomOf="@+id/addBtn"
+        app:layout_constraintEnd_toStartOf="@+id/addBtn"
+        app:layout_constraintStart_toStartOf="@+id/homeNameEditText" />
 
     <Button
         android:id="@+id/addBtn"
-        android:layout_width="90dp"
-        android:layout_height="128dp"
-        android:layout_marginEnd="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="#B955D1"
         android:fontFamily="@font/cookierun_bold"
         android:text="추가"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/homeNameEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/homeNameEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/homeNameEditText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
 
     <Button
         android:id="@+id/clearBtn"
         android:layout_width="261dp"
         android:layout_height="51dp"
+        android:layout_marginTop="112dp"
         android:backgroundTint="#B955D1"
         android:fontFamily="@font/cookierun_bold"
         android:text="취소하고 돌아가기"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBtn"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
