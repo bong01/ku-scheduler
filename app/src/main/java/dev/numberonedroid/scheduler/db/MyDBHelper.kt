@@ -76,7 +76,7 @@ class MyDBHelper(val context:Context): SQLiteOpenHelper(context, DB_NAME, null, 
     @SuppressLint("Range")
     fun showSchedule(year:Int, month:Int, day:Int): ArrayList<MyData> {
         val mydata = arrayListOf<MyData>()
-        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day';"
+        val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month' and $DAY='$day' order by $STARTHOUR,$STARTMIN,$ENDHOUR,$ENDMIN,$ID;"
         val db = readableDatabase
         val cursor = db.rawQuery(strsql,null)
         //val flag = cursor.count!=0
