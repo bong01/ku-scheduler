@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.numberonedroid.scheduler.databinding.RowBinding
 import dev.numberonedroid.scheduler.model.MyData
+import java.text.DecimalFormat
 
 class MyAdapter(val items:ArrayList<MyData>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     interface OnItemClickListener{
@@ -39,7 +40,10 @@ class MyAdapter(val items:ArrayList<MyData>):RecyclerView.Adapter<MyAdapter.MyVi
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding.textView.text = items[position].title+"    "+items[position].starthour+":"+items[position].startmin+" ~ "+items[position].endhour+":"+items[position].endmin
+        val myform = DecimalFormat("00")
+        holder.binding.textView.text = items[position].title+"    "+myform.format(items[position].starthour)+":"+
+                myform.format(items[position].startmin)+" ~ "+myform.format(items[position].endhour)+":"+
+                myform.format(items[position].endmin)
     }
 
 

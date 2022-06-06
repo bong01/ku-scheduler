@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.numberonedroid.scheduler.R
@@ -27,10 +28,12 @@ class SecondMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //supportActionBar?.setDisplayShowTitleEnabled(false)
         YEAR = intent.getIntExtra("year", 0)
         MONTH = intent.getIntExtra("month", 0)
         DAY = intent.getIntExtra("day", 0)
+        supportActionBar?.title = "${MONTH}월 ${DAY}일"
+        setContentView(binding.root)
         initData()
         init()
     }
@@ -47,7 +50,8 @@ class SecondMainActivity : AppCompatActivity() {
         myDBHelper = MyDBHelper(this)
         val data = myDBHelper.showSchedule(YEAR, MONTH, DAY)
         adapter = MyAdapter(data)
-
+        if(adapter.items.size==0)
+            binding.emptyView.isVisible=true
         adapter.itemClickListener = object : MyAdapter.OnItemClickListener {
             override fun OnItemClick(position: Int) {
                 val builder = AlertDialog.Builder(this@SecondMainActivity)
@@ -85,6 +89,10 @@ class SecondMainActivity : AppCompatActivity() {
             intent.putExtra("year", getIntent().getIntExtra("year", 0))
             intent.putExtra("month", getIntent().getIntExtra("month", 0))
             intent.putExtra("day", getIntent().getIntExtra("day", 0))
+            startActivity(intent)
+        }
+        binding.backbutton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
