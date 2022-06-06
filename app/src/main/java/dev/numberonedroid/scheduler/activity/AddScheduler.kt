@@ -1,8 +1,11 @@
 package dev.numberonedroid.scheduler.activity
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -11,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import dev.numberonedroid.scheduler.R
 import dev.numberonedroid.scheduler.db.MyDBHelper
 import dev.numberonedroid.scheduler.model.MyData
+import dev.numberonedroid.scheduler.util.Constant
+import dev.numberonedroid.scheduler.util.ScheduleReceiver
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddScheduler : AppCompatActivity() {
@@ -113,7 +119,16 @@ class AddScheduler : AppCompatActivity() {
                             isDone = false
                         )
                     )
+
+                    val today = Calendar.getInstance()
+                    val startDate = "${YEAR}-${MONTH}-${DAY} ${shour}:${smin}:00"
+                    val format = SimpleDateFormat("yyyy-MM-dd HH:mm:00")
+                    val date = format.parse(startDate) //string to Date
+                    val diff = ((today.time.time - date.time) / 60 * 1000).toInt()
+
+                    registerNotification(titletext.text.toString(), contenttext.text.toString(), diff.toLong())
                 }
+
                 finish()
             }
         }
@@ -122,6 +137,27 @@ class AddScheduler : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun registerNotification(title:String, content:String, diff:Long) {
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(this, ScheduleReceiver::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("content", content)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, Constant.NOTIFICATION_ID, intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val triggerTime = (SystemClock.elapsedRealtime() // 기기가 부팅된 후 경과한 시간 사용
+                + diff) // ms 이기 때문에 초단위로 변환 (*1000)
+        alarmManager.set(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            triggerTime,
+            pendingIntent
+        ) // set : 일회성 알림
+        Toast.makeText(this@AddScheduler, "${Constant.ALARM_TIMER} 초 후에 알림이 발생합니다.", Toast.LENGTH_SHORT).show()
     }
 
 }

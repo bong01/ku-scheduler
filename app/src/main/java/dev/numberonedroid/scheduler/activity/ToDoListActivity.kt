@@ -13,7 +13,7 @@ class ToDoListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityToDoListBinding
     private lateinit var recyclerView: RecyclerView
-    private var scheduleList: ArrayList<MyData> = ArrayList()
+    private var schedules: ArrayList<MyData> = ArrayList()
     lateinit var myDBHelper: MyDBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +22,16 @@ class ToDoListActivity : AppCompatActivity() {
         binding = ActivityToDoListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initLayout()
         initScheduleList()
         initRecyclerView()
 
+    }
+
+    private fun initLayout() {
+        binding.apply {
+            tvMonth.text = intent.getIntExtra("month", 0).toString()
+        }
     }
 
     private fun initScheduleList() {
@@ -32,13 +39,13 @@ class ToDoListActivity : AppCompatActivity() {
         val year = intent.getIntExtra("year", 0)
         val month = intent.getIntExtra("month", 0)
         myDBHelper = MyDBHelper(this)
-        scheduleList = myDBHelper.showSchedule2(year, month) // todo
+        schedules = myDBHelper.showSchedule2(year, month) // todo
     }
 
     private fun initRecyclerView() {
         recyclerView = binding.rvToDoList
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = ToDoListAdapter(scheduleList)
+        recyclerView.adapter = ToDoListAdapter(schedules)
     }
 
 }
