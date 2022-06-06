@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import dev.numberonedroid.scheduler.model.MyData
 
 
@@ -135,7 +134,7 @@ class MyDBHelper(val context: Context) : SQLiteOpenHelper(context, DB_NAME, null
     }
 
     @SuppressLint("Range")
-    fun showSchedule2(year: Int, month: Int): ArrayList<MyData> {
+    fun showScheduleByMonth(year: Int, month: Int): ArrayList<MyData> {
         val mydata = arrayListOf<MyData>()
         val strsql = "select * from $TABLE_NAME where $YEAR='$year' and $MONTH='$month';"
         val db = readableDatabase

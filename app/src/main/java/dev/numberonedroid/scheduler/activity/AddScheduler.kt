@@ -157,7 +157,6 @@ class AddScheduler : AppCompatActivity() {
             triggerTime,
             pendingIntent
         ) // set : 일회성 알림
-        Toast.makeText(this@AddScheduler, "${Constant.ALARM_TIMER} 초 후에 알림이 발생합니다.", Toast.LENGTH_SHORT).show()
     }
 
 }

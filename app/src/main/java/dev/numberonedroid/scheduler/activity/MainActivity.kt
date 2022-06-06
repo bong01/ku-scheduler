@@ -80,17 +80,6 @@ class MainActivity : AppCompatActivity() {
                 binding.calendarRecyclerView.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_tonext)
                 updateCalendar()
             }
-//            //TODO 버튼 디자인 수정
-//            btnToDoList.setOnClickListener {
-//                var calendar = currentDate.clone() as Calendar
-//                val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
-//                intent.putExtra("year", calendar.get(Calendar.YEAR))
-//                intent.putExtra("month", calendar.get(Calendar.MONTH))
-//                startActivity(intent)
-//            }
-//            btnHomepageView.setOnClickListener {
-//                startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
-//            }
         }
 
     }

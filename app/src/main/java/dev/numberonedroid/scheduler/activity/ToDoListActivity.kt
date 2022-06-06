@@ -35,11 +35,10 @@ class ToDoListActivity : AppCompatActivity() {
     }
 
     private fun initScheduleList() {
-        //TODO DB에 있는 데이터로 교체하기
         val year = intent.getIntExtra("year", 0)
         val month = intent.getIntExtra("month", 0)
         myDBHelper = MyDBHelper(this)
-        schedules = myDBHelper.showSchedule2(year, month) // todo
+        schedules = myDBHelper.showScheduleByMonth(year, month)
     }
 
     private fun initRecyclerView() {
