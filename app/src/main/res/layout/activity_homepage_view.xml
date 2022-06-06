@@ -24,23 +24,25 @@
         android:layout_weight="1">
 
         <Button
-            android:backgroundTint="#B955D1"
             android:id="@+id/openFileBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#B955D1"
+            android:fontFamily="@font/cookierun_bold"
             android:text="저장된 자료 열기" />
 
         <Button
-            android:backgroundTint="#B955D1"
             android:id="@+id/addHomeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
+            android:layout_weight="1"
+            android:backgroundTint="#B955D1"
+            android:fontFamily="@font/cookierun_bold"
             android:text="홈페이지 추가하기" />
     </LinearLayout>
 

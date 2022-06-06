@@ -3,6 +3,8 @@ package dev.numberonedroid.scheduler.activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     //val monthStr = arrayOf("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC")
     var currentDate = Calendar.getInstance()
     var position = currentDate.get(Calendar.MONTH)
+
+    var calendar = currentDate.clone() as Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,17 +80,17 @@ class MainActivity : AppCompatActivity() {
                 binding.calendarRecyclerView.animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.calendar_grid_tonext)
                 updateCalendar()
             }
-            //TODO 버튼 디자인 수정
-            btnToDoList.setOnClickListener {
-                var calendar = currentDate.clone() as Calendar
-                val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
-                intent.putExtra("year", calendar.get(Calendar.YEAR))
-                intent.putExtra("month", calendar.get(Calendar.MONTH))
-                startActivity(intent)
-            }
-            btnHomepageView.setOnClickListener {
-                startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
-            }
+//            //TODO 버튼 디자인 수정
+//            btnToDoList.setOnClickListener {
+//                var calendar = currentDate.clone() as Calendar
+//                val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
+//                intent.putExtra("year", calendar.get(Calendar.YEAR))
+//                intent.putExtra("month", calendar.get(Calendar.MONTH))
+//                startActivity(intent)
+//            }
+//            btnHomepageView.setOnClickListener {
+//                startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
+//            }
         }
 
     }
@@ -124,5 +128,27 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.calendarRecyclerView.adapter = adapter
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.move_activity_menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.item1
+            -> {
+                var calendar = currentDate.clone() as Calendar
+                val intent = Intent(this@MainActivity, ToDoListActivity::class.java)
+                intent.putExtra("year", calendar.get(Calendar.YEAR))
+                intent.putExtra("month", calendar.get(Calendar.MONTH))
+                startActivity(intent)
+            }
+            R.id.item2
+            -> startActivity(Intent(this@MainActivity, HomepageViewActivity::class.java))
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

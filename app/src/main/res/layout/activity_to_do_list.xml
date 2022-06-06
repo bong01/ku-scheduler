@@ -6,7 +6,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.ToDoListActivity">
+        tools:context=".activity.ToDoListActivity"
+        android:background="@drawable/back_todo">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -15,27 +16,29 @@
             android:gravity="center">
 
         <TextView
-                android:id="@+id/tv_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="6"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/cookierun_bold"
+            android:text="6"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
-                android:id="@+id/tv_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="월 To-do List"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+            android:id="@+id/tv_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/cookierun_bold"
+            android:text="월 To-do List"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
