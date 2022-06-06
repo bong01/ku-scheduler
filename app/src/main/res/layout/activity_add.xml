@@ -12,13 +12,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <Button
+        <android.widget.Button
             android:id="@+id/addbackbutton"
-            android:layout_width="48dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:text="←"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="@drawable/small_btn3" />
     </LinearLayout>
 
     <LinearLayout
@@ -94,14 +95,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="10dp">
-        <Button
+        <android.widget.Button
             android:id="@+id/startbutton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:fontFamily="@font/cookierun_bold"
-            android:text="시작시간 설정" />
+            android:text="시작시간 설정"
+            android:background="@drawable/bigbtn"/>
 
         <TextView
             android:id="@+id/stime"
@@ -122,14 +124,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="10dp">
-        <Button
+        <android.widget.Button
             android:id="@+id/endbutton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:fontFamily="@font/cookierun_bold"
-            android:text="종료시간 설정" />
+            android:text="종료시간 설정"
+            android:background="@drawable/bigbtn"/>
 
         <TextView
             android:id="@+id/etime"
@@ -153,15 +156,16 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:padding="10dp">
-        <Button
+        <android.widget.Button
             android:id="@+id/savebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
             android:fontFamily="@font/cookierun_bold"
             android:text="저장"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etime" />
+            app:layout_constraintTop_toBottomOf="@+id/etime"
+            android:background="@drawable/bigbtn2" />
     </LinearLayout>
 
 </LinearLayout>

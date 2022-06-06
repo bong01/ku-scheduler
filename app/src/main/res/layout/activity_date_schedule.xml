@@ -7,14 +7,15 @@
     tools:context=".activity.DateScheduleActivity"
     android:background="@drawable/back">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:fontFamily="@font/cookierun_bold"
         android:text="back to calendar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bigbtn"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

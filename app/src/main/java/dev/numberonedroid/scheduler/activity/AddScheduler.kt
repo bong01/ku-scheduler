@@ -118,8 +118,10 @@ class AddScheduler : AppCompatActivity() {
             }
         }
         addbackbutton.setOnClickListener {
-            val intent = Intent(this, SecondMainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, SecondMainActivity::class.java)
+//            startActivity(intent)
+            // 인텐트로 전환하면 데이터 제대로 출력 안되서 finish로 바꿧습니다!
+            finish()
         }
 
     }

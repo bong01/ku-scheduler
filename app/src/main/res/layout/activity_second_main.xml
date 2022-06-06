@@ -10,46 +10,50 @@
     android:background="@drawable/back">
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/backbutton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/small_btn3"
         android:text="←"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="7"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp" />
+
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="7"
+        android:fontFamily="@font/cookierun_bold"
         android:gravity="center"
-        android:visibility="gone"
-        android:text="저장된 일정이 없습니다." />
+        android:text="저장된 일정이 없습니다."
+        android:visibility="gone" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <android.widget.Button
+        android:id="@+id/plusbutton"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_gravity="right"
+        android:layout_margin="20dp"
         android:layout_weight="1"
-        android:gravity="right">
-        <Button
-            android:id="@+id/plusbutton"
-            android:layout_width="53dp"
-            android:layout_height="58dp"
-            android:text="+"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="20dp"/>
-    </LinearLayout>
-
+        android:background="@drawable/bigbtn2"
+        android:fontFamily="@font/cookierun_bold"
+        android:text="일정 추가하기"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
