@@ -82,9 +82,14 @@ class SecondMainActivity : AppCompatActivity() {
                     .setNegativeButton("삭제", DialogInterface.OnClickListener { dlg, _ ->
                         myDBHelper.deleteSchedule(data[position].id!!)
                         adapter.removeItem(position)
-                        if(adapter.items.size==0)
-                            binding.recyclerView.isVisible=false
-                            binding.emptyView.isVisible=true
+                        if(adapter.items.size==0) {
+                            binding.recyclerView.isVisible = false
+                            binding.emptyView.isVisible = true
+                        }
+                        else {
+                            binding.recyclerView.isVisible = true
+                            binding.emptyView.isVisible = false
+                        }
                     })
                 val dlg = builder.create()
                 dlg.show()
