@@ -2,14 +2,20 @@ package dev.numberonedroid.scheduler.activity
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.DocumentsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,12 +27,15 @@ import java.io.File
 import java.io.PrintStream
 import java.lang.Exception
 import java.util.*
+import java.util.jar.Manifest
+import kotlin.collections.ArrayList
 
 class HomepageViewActivity : AppCompatActivity() {
     lateinit var binding:ActivityHomepageViewBinding
     var data:ArrayList<Data_RefRoom> = ArrayList()
     lateinit var recyclerView: RecyclerView
     lateinit var adapter:Adapter_RefRoom
+    private val REQUEST_OPEN_TREE = 44
 
     val activityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -45,20 +54,30 @@ class HomepageViewActivity : AppCompatActivity() {
         initData()
         initRecyclerView()
         initLayout()
+        initPermission()
 
     }
 
     private fun initLayout() {
         binding.apply {
             openFileBtn.setOnClickListener {
-                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                    type = "application/pdf"
+                when{
+                    (ActivityCompat.checkSelfPermission(this@HomepageViewActivity,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)->{
+                        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
+                        startActivityForResult(intent, REQUEST_OPEN_TREE)
+                    }
 
-                    putExtra(DocumentsContract.EXTRA_INITIAL_URI, 2)
+                    ActivityCompat.shouldShowRequestPermissionRationale(this@HomepageViewActivity,
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+                        permissionAlertDlg()
+                    }
+
+                    else -> {
+                        requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    }
                 }
 
-                startActivity(intent)
             }
             addHomeBtn.setOnClickListener {
                 val intent2 = Intent(this@HomepageViewActivity, AddHomepageActivity::class.java)
@@ -143,6 +162,49 @@ class HomepageViewActivity : AppCompatActivity() {
             output.println(adapter.items[i].homeName)
             output.println(adapter.items[i].homeUri)
             output.close()
+        }
+    }
+
+    val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            if(it){
+                initPermission()
+            } else {
+                Toast.makeText(this, "권한 승인이 거부되었습니다.", Toast.LENGTH_SHORT ).show()
+                permissionAlertDlg()
+            }
+        }
+
+    private fun permissionAlertDlg(){
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setMessage("파일 접근 권한이 허용되어야 합니다.")
+            .setTitle("파일 접근 권한 체크")
+            .setPositiveButton("ACCEPT"){
+                    _, _ ->
+                requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+            .setNegativeButton("REJECT"){
+                    dlg, _ -> dlg.dismiss()
+            }
+        val dlg = builder.create()
+        dlg.show()
+    }
+
+    private fun initPermission(){
+        when{
+            (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)->{
+                Toast.makeText(this, "파일 접근 동의함", Toast.LENGTH_SHORT ).show()
+            }
+
+            ActivityCompat.shouldShowRequestPermissionRationale(this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+                permissionAlertDlg()
+            }
+
+            else -> {
+                requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
         }
     }
 }
