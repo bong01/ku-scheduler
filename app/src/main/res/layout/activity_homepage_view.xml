@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.HomepageViewActivity"
-    android:background="@drawable/img">
+    android:background="@drawable/back_ref">
 
 
     <androidx.recyclerview.widget.RecyclerView
