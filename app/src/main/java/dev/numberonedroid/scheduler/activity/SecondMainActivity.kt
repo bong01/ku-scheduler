@@ -104,8 +104,9 @@ class SecondMainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.backbutton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, MainActivity::class.java)
+            //startActivity(intent)
+            this.finish()
         }
     }
 

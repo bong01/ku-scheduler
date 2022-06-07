@@ -10,5 +10,5 @@
 
     <color name="calendargrid">#BAFFFFFF</color>
     <color name="today">#BAFFFAA0</color>
-    <color name="selectday">#33888888</color>
+    <color name="selectday">#9CF1F1F1</color>
 </resources>
