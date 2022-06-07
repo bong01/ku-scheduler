@@ -44,6 +44,7 @@ class HomepageViewActivity : AppCompatActivity() {
             val homepage = it.data?.getSerializableExtra("homepage") as Data_RefRoom
             Toast.makeText(this, homepage.homeName + " 홈페이지 추가됨!", Toast.LENGTH_SHORT).show()
             data.add(Data_RefRoom(homepage.homeName, homepage.homeUri))
+            adapter.notifyItemInserted(data.size-1)
         }
     }
 
@@ -119,7 +120,7 @@ class HomepageViewActivity : AppCompatActivity() {
 
         val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
-            ItemTouchHelper.LEFT) {
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(
                 p0: RecyclerView,
                 p1: RecyclerView.ViewHolder,
