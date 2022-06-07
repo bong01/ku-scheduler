@@ -153,7 +153,6 @@ class AddScheduler : AppCompatActivity() {
         )
 
         val triggerTime = SystemClock.elapsedRealtime() + diff
-        Toast.makeText(this, triggerTime.toString(), Toast.LENGTH_SHORT).show()
         alarmManager.set(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
             triggerTime,
