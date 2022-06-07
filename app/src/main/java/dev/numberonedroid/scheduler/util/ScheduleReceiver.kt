@@ -58,12 +58,6 @@ class ScheduleReceiver() : BroadcastReceiver() {
             NOTIFICATION_ID, // requestCode
             contentIntent, // 알림 클릭 시 이동할 인텐트
             PendingIntent.FLAG_IMMUTABLE
-            /*
-            1. FLAG_UPDATE_CURRENT : 현재 PendingIntent를 유지하고, 대신 인텐트의 extra data는 새로 전달된 Intent로 교체
-            2. FLAG_CANCEL_CURRENT : 현재 인텐트가 이미 등록되어있다면 삭제, 다시 등록
-            3. FLAG_NO_CREATE : 이미 등록된 인텐트가 있다면, null
-            4. FLAG_ONE_SHOT : 한번 사용되면, 그 다음에 다시 사용하지 않음
-             */
         )
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)

@@ -124,7 +124,7 @@ class AddScheduler : AppCompatActivity() {
                     val startDate = "${YEAR}-${MONTH}-${DAY} ${shour}:${smin}:00"
                     val format = SimpleDateFormat("yyyy-MM-dd HH:mm:00")
                     val date = format.parse(startDate) //string to Date
-                    val diff = ((today.time.time - date.time) / 60 * 1000).toInt()
+                    val diff = (date.time - today.time.time).toInt()
 
                     registerNotification(titletext.text.toString(), contenttext.text.toString(), diff.toLong())
                 }
@@ -152,8 +152,8 @@ class AddScheduler : AppCompatActivity() {
             PendingIntent.FLAG_IMMUTABLE
         )
 
-        val triggerTime = (SystemClock.elapsedRealtime() // 기기가 부팅된 후 경과한 시간 사용
-                + diff) // ms 이기 때문에 초단위로 변환 (*1000)
+        val triggerTime = SystemClock.elapsedRealtime() + diff
+        Toast.makeText(this, triggerTime.toString(), Toast.LENGTH_SHORT).show()
         alarmManager.set(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
             triggerTime,
