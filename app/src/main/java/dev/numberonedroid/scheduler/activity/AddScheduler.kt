@@ -126,7 +126,9 @@ class AddScheduler : AppCompatActivity() {
                     val date = format.parse(startDate) //string to Date
                     val diff = (date.time - today.time.time).toInt()
 
-                    registerNotification(titletext.text.toString(), contenttext.text.toString(), diff.toLong())
+                    if (diff >= 0) {
+                        registerNotification(titletext.text.toString(), contenttext.text.toString(), diff.toLong())
+                    }
                 }
 
                 finish()
