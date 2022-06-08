@@ -148,8 +148,10 @@ class AddScheduler : AppCompatActivity() {
         intent.putExtra("title", title)
         intent.putExtra("content", content)
         val pendingIntent = PendingIntent.getBroadcast(
-            this, Constant.NOTIFICATION_ID, intent,
-            PendingIntent.FLAG_IMMUTABLE
+            this,
+            Constant.NOTIFICATION_ID,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
         val triggerTime = SystemClock.elapsedRealtime() + diff

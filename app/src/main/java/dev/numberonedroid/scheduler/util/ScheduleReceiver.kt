@@ -3,6 +3,8 @@ package dev.numberonedroid.scheduler.util
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -57,7 +59,7 @@ class ScheduleReceiver() : BroadcastReceiver() {
             context,
             NOTIFICATION_ID, // requestCode
             contentIntent, // 알림 클릭 시 이동할 인텐트
-            PendingIntent.FLAG_IMMUTABLE
+            FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
         )
 
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
