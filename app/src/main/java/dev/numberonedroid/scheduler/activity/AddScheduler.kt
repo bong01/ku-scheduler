@@ -121,13 +121,13 @@ class AddScheduler : AppCompatActivity() {
                     )
 
                     val today = Calendar.getInstance()
-                    val startDate = "${YEAR}-${MONTH}-${DAY} ${shour}:${smin}:00"
-                    val format = SimpleDateFormat("yyyy-MM-dd HH:mm:00")
+                    val startDate = "${YEAR}-${MONTH}-${DAY} ${shour}:${smin}:${today.get(Calendar.SECOND)}"
+                    val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                     val date = format.parse(startDate) //string to Date
-                    val diff = (date.time - today.time.time).toInt()
+                    val diff = date.time - today.time.time
 
                     if (diff >= 0) {
-                        registerNotification(titletext.text.toString(), contenttext.text.toString(), diff.toLong())
+                        registerNotification(titletext.text.toString(), contenttext.text.toString(), diff)
                     }
                 }
 

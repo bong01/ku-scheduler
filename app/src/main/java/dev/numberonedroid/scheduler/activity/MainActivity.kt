@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
 import dev.numberonedroid.scheduler.R
 import dev.numberonedroid.scheduler.adapter.CalendarGridAdapter
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         initLayout()
     }
 
